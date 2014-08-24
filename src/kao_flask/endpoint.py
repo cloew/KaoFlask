@@ -14,4 +14,4 @@ class Endpoint:
         """ Add the Endpoint to the server """
         for method in self.methodToController:
             controller = self.methodToController[method]
-            app.add_url_rule(self.url, 'stuff', controller.perform, methods=[method])
+            app.add_url_rule(self.url, str(controller.perform), controller.perform, methods=[method])
