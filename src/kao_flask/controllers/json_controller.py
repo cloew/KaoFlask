@@ -5,7 +5,7 @@ class JSONController:
     
     def perform(self, *args, **kwargs):
         """ Perform the JSON action """
-        response = self.performWithJSON(*args, json=request.json, **kwargs)
+        response = self.performWithJSON(*args, **kwargs)
         
         code = 200
         if len(response) == 2:
@@ -16,3 +16,8 @@ class JSONController:
         
     def performWithJSON(self, json=None):
         """ Perform the JSON action """
+       
+    @property
+    def json(self):
+        """ Return the current JSON """
+        return request.json
