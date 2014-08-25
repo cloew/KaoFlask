@@ -8,7 +8,7 @@ class JSONController:
         response = self.performWithJSON(*args, **kwargs)
         
         code = 200
-        if len(response) == 2:
+        if len(response) == 2 and type(response) is tuple:
             data, code = response
         else:
             data = response
