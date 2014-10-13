@@ -9,9 +9,9 @@ class Server:
         self.routes = routes
         self.applyRoutes()
         
-    def run(self, debug=False):
+    def run(self, host=None, debug=False):
         """ Run the server """
-        self.app.run(debug=debug)
+        self.app.run(debug=debug, host=host)
         
     def applyRoutes(self):
         """ Apply the routes to the server """
