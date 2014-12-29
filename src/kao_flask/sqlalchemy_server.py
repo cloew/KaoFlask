@@ -1,12 +1,13 @@
 from kao_flask.server import Server
-
-from flask.ext.sqlalchemy import SQLAlchemy
+from kao_flask.database import db
 
 class SqlAlchemyServer(Server):
     """ Represents a Sql Alchemy based Flask Server """
     
     def __init__(self, name, config, routes=[]):
         """ Initialize the Server """
-        Server.__init__(name, routes=routes)
+        Server.__init__(self, name, routes=routes)
         self.app.config.from_object(config)
-        self.db = SQLAlchemy(self.app)
+        
+        db.init_app(self.app)
+        self.db = db
