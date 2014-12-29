@@ -3,7 +3,7 @@ from kao_flask.server import Server
 from flask.ext.sqlalchemy import SQLAlchemy
 
 class SqlAlchemyServer(Server):
-    """ Represents a Sql Alchemy based Falsk Server """
+    """ Represents a Sql Alchemy based Flask Server """
     
     def __init__(self, name, config, routes=[]):
         """ Initialize the Server """
