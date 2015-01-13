@@ -6,4 +6,4 @@ class SqlAlchemyExtension:
     def initialize(self, server):
         """ Initialize the Server with the extension """
         db.init_app(server.app)
-        self.db = db
+        server.db = db
