@@ -3,7 +3,19 @@ from flask import jsonify, request
 class JSONController:
     """ Represents a controller for a JSON Page """
     
-    def perform(self, *args, **kwargs):
+    def __init__(self, decorators=[]):
+        """ Initialize the JSON Controller with its required decorators """
+        self.decorators = decorators
+        
+    @property
+    def perform(self):
+        """ Return the perform function """
+        method = self.performMethod
+        for decorator in self.decorators:
+            method = decorator(method)
+        return method
+    
+    def performMethod(self, *args, **kwargs):
         """ Perform the JSON action """
         response = self.performWithJSON(*args, **kwargs)
         
