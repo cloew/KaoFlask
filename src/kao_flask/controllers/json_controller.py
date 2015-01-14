@@ -17,6 +17,7 @@ class JSONController:
     
     def performMethod(self, *args, **kwargs):
         """ Perform the JSON action """
+        kwargs['json'] = self.json
         response = self.performWithJSON(*args, **kwargs)
         
         code = 200
