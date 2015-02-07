@@ -1,9 +1,12 @@
+from kao_url import KaoURL
 
 class Endpoint:
     """ Represents a URL endpoint """
     
     def __init__(self, url, **kwargs):
         """ Initialize the Endpoint """
+        if url.__class__ is KaoURL:
+            url = url.route
         self.url = url
         
         self.methodToController = {}
