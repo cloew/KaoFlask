@@ -11,7 +11,7 @@ class JSONController:
     def perform(self):
         """ Return the perform function """
         method = self.performMethod
-        for decorator in self.decorators:
+        for decorator in reversed(self.decorators):
             method = decorator(method)
         return method
     
