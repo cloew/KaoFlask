@@ -10,7 +10,7 @@ class KaoURL:
         self.arguments = []
         for piece in pieces[1:]:
             argPieces = piece.split('>')
-            self.arguments.append(argPieces[0].split(':')[1])
+            self.arguments.append(argPieces[0].split(':')[1] if ':' in argPieces[0] else argPieces[0])
             urlPieces.append(argPieces[1])
             
         self.url = ""
