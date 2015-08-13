@@ -33,4 +33,4 @@ class JSONController:
     @property
     def json(self):
         """ Return the current JSON """
-        return request.json
+        return request.get_json()
