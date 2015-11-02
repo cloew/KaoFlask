@@ -1,3 +1,4 @@
+from .endpoint_like import endpoint_like
 from flask import Flask
 
 class Server:
@@ -21,5 +22,8 @@ class Server:
         
     def applyRoutes(self):
         """ Apply the routes to the server """
-        for route in self.routes:
-            route.register(self.app)
+        if endpoint_like(self.routes):
+            self.routes.register(self.app)
+        else:
+            for route in self.routes:
+                route.register(self.app)
