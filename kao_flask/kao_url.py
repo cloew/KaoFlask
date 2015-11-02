@@ -21,7 +21,7 @@ class KaoUrl:
             
         self._url = ""
         for i, urlPiece in enumerate(urlPieces):
-            self.url += urlPiece
+            self._url += urlPiece
             if i != len(urlPieces)-1:
                 self._url += "{}"
                 
