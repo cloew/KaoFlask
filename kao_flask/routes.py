@@ -1,3 +1,4 @@
+from .endpoint_like import endpoint_like
 from kao_decorators import proxy_for
 
 @proxy_for('endpoints', ['__iter__'])
@@ -12,4 +13,7 @@ class Routes:
             
     def add(self, endpoint):
         """ Add the given endpoint """
-        self.endpoints.append(endpoint)
+        if endpoint_like(endpoint):
+            self.endpoints.append(endpoint)
+        else:
+            self.endpoints.extend(endpoint)
