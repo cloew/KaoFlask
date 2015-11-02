@@ -7,7 +7,7 @@ from kao_decorators import proxy_for
 class Routes:
     """ Represents a container of Route Endpoints that can add nested Route Endpoints """
     
-    def __init__(*endpoints):
+    def __init__(self, *endpoints):
         """ Initialize with any number of Endpoints """
         self.endpoints = []
         self.nestedRoutes = {}
