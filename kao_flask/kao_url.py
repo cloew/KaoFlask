@@ -1,6 +1,6 @@
 import posixpath
 
-class KaoURL:
+class KaoUrl:
     """ Represents a URL string """
     
     def __init__(self, url, parent=None):

@@ -25,7 +25,7 @@ class Routes:
         """ Nest the given endpoints at the prefix given """
         if prefix in self.nestedRoutes:
             self.nestedRoutes[prefix].add(*endpoints)
-        else
+        else:
             routes = Routes(*endpoints)
             self.nestedRoutes[prefix] = routes
             self.endpoints.append(NestedRoutes(prefix, routes))
