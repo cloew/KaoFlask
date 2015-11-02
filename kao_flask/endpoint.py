@@ -5,8 +5,8 @@ class Endpoint:
     
     def __init__(self, url, **kwargs):
         """ Initialize the Endpoint """
-        if url.__class__ is KaoURL:
-            url = url.route
+        if hasattr(url, 'url'):
+            url = url.url
         self.url = url
         
         self.methodToController = {}
