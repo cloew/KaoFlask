@@ -1,10 +1,12 @@
+import posixpath
 
 class KaoURL:
     """ Represents a URL string """
     
-    def __init__(self, url):
+    def __init__(self, url, parent=None):
         """ Initialize the URL with the url """
         self.flaskUrl = url
+        self.nestIn(parent)
         self._parseArgs(url)
         
     def _parseArgs(self, url):
@@ -30,4 +32,16 @@ class KaoURL:
         
     def build(self, **kwargs):
         """ Build the url replacing the arguments properly """
-        return self._url.format(*[kwargs[argument] for argument in self.arguments])
+        url = self._url.format(*[kwargs[argument] for argument in self.arguments])
+        if self.parent is not None:
+            url = posixpath(self.parent.build(**kwargs), url)
+        return url
+        
+    def nest(self, *urls):
+        """ Nest the given Urls inside this Url """
+        for url in urls:
+            url.nestIn(self)
+        
+    def nestIn(self, parent):
+        """ Nest this Url in the parent Url """
+        self.parent = parent
