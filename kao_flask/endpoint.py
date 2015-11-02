@@ -1,4 +1,3 @@
-from .kao_url import KaoURL
 
 class Endpoint:
     """ Represents a URL endpoint """
