@@ -13,8 +13,8 @@ class Endpoint:
         for key in kwargs:
             self.methodToController[key.upper()] = kwargs[key]
         
-    def addToServer(self, app):
-        """ Add the Endpoint to the server """
+    def register(self, app):
+        """ Register the Endpoint with the server """
         for method in self.methodToController:
             controller = self.methodToController[method]
             app.add_url_rule(self.url, str(controller.perform), controller.perform, methods=[method])

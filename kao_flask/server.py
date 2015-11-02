@@ -22,4 +22,4 @@ class Server:
     def applyRoutes(self):
         """ Apply the routes to the server """
         for route in self.routes:
-            route.addToServer(self.app)
+            route.register(self.app)
