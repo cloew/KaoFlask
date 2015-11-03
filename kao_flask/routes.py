@@ -1,26 +1,25 @@
-from .endpoint_like import endpoint_like
+from .route_like import route_like
 
 from kao_decorators import proxy_for
 
-@proxy_for('endpoints', ['__iter__'])
+@proxy_for('routes', ['__iter__'])
 class Routes:
-    """ Represents a container of Route Endpoints that can add nested Route Endpoints """
+    """ Represents a container of Routes that implements the Route Interface """
     
-    def __init__(self, *endpoints):
-        """ Initialize with any number of Endpoints """
-        self.endpoints = []
-        self.nestedRoutes = {}
-        self.add(endpoints)
+    def __init__(self, *routes):
+        """ Initialize with any number of routes """
+        self.routes = []
+        self.add(routes)
             
-    def add(self, *endpoints):
-        """ Add the given endpoints """
-        for endpoint in endpoints:
-            if endpoint_like(endpoint):
-                self.endpoints.append(endpoint)
+    def add(self, *routes):
+        """ Add the given routes """
+        for route in routes:
+            if route_like(route):
+                self.routes.append(route)
             else:
-                self.endpoints.extend(endpoint)
+                self.routes.extend(route)
             
     def register(self, app):
         """ Register the routes with the given app """
-        for endpoint in self.endpoints:
-            endpoint.register(app)
+        for route in self.routes:
+            route.register(app)
