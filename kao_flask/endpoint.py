@@ -8,12 +8,12 @@ class Endpoint:
             url = url.url
         self.url = url
         
-        self.methodToController = {}
+        self.methodToHandler = {}
         for key in kwargs:
-            self.methodToController[key.upper()] = kwargs[key]
+            self.methodToHandler[key.upper()] = kwargs[key]
         
     def register(self, app):
         """ Register the Endpoint with the server """
-        for method in self.methodToController:
-            controller = self.methodToController[method]
-            app.add_url_rule(self.url, str(controller.perform), controller.perform, methods=[method])
+        for method in self.methodToHandler:
+            handler = self.methodToHandler[method]
+            app.add_url_rule(self.url, str(handler), handler, methods=[method])
