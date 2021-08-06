@@ -16,4 +16,4 @@ class Endpoint:
         """ Register the Endpoint with the server """
         for method in self.methodToHandler:
             handler = self.methodToHandler[method]
-            app.add_url_rule(self.url, str(handler), handler, methods=[method])
+            app.route(self.url, methods=[method])(handler)
