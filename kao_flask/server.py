@@ -1,5 +1,6 @@
-from .route_like import route_like
 from flask import Flask
+
+from .route_registration import register_routes
 
 class Server:
     """ Represents the Flask Server """
@@ -22,8 +23,4 @@ class Server:
         
     def applyRoutes(self):
         """ Apply the routes to the server """
-        if route_like(self.routes):
-            self.routes.register(self.app)
-        else:
-            for route in self.routes:
-                route.register(self.app)
+        register_routes(self.app, self.routes)
