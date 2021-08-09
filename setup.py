@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='kao_flask',
-      version='0.5.1',
+      version='0.5.2',
       description='Python Flask Wrapper',
       author='Chris Loew',
       author_email='cloew123@gmail.com',
